@@ -1,4 +1,4 @@
-### Introduction
+## Introduction
 
 This second programming assignment is about writing an R
 function that is able to cache potentially time-consuming computations.
@@ -10,7 +10,7 @@ benefit to caching the inverse of a matrix rather than computing it
 repeatedly. The assignment is to write a pair of functions that cache the 
 inverse of a matrix.
 
-The following functions were developed:
+###The following functions were developed:
 
 1.  `makeCacheMatrix`: This function creates a special "matrix" object
     that can cache its inverse.
@@ -23,7 +23,7 @@ The inverse of a square matrix is done using the `solve`
 function in R. It should be assumed that the matrix supplied is always
 invertible.
 
-Specific tasks:
+###Specific tasks:
 
 1.  Fork the GitHub repository containing the stub R files at
     [https://github.com/rdpeng/ProgrammingAssignment2](https://github.com/rdpeng/ProgrammingAssignment2)
@@ -39,82 +39,67 @@ Specific tasks:
 ## Tasks Completion
 
 ### Steps
-####1 - Fork  - <b>Done</b>
-####2 - Clone - <b>Done</b>
-####3 - New code - <b>Done</b> - Also, new Readme file created (this)  
-####4 - Commit - <b>Done</b>
-####5 - Submit URL - <b>Done</b>
+####1 - Fork  - **Done**
+####2 - Clone - **Done**
+####3 - New code - **Done** - *Also, new Readme file was created (this)*  
+####4 - Commit - **Done**
+####5 - Submit URL - **Done**
 
-## Code
+## R Code
+```{r}
+## Following the provided examples (makeVector and cachemean) 
 
-<i> ## Following the provided examples (makeVector and cachemean)</i>
-
-<i> ## Function makeCacheMatrix </i>
-<i> ## It defines four functions and uses scope rules to cache data </i>
+## Function makeCacheMatrix
+## It defines four functions and uses scope rules to cache data
 
 makeCacheMatrix <- function(x = matrix()) {
-
-<i>  ## functions definitions: set, get, setinverse, and getinverse </i>
+  ## functions definitions: set, get, setinverse, and getinverse 
   
+  # Set
   inv <- NULL
   set <- function(y) {
     x <<- y
     inv <<- NULL
   }
   
+  # Get
   get <- function() x
-
+  
+  # setinverse
   setinverse <- function(solve) inv <<- solve
   
+  # getinverse
   getinverse <- function() inv
   
-<i>  ## creating functions list to return </i>
-
+  ## creating functions list to return
   list(set = set, 
-  
        get = get, 
-       
        setinverse = setinverse, 
-       
        getinverse = getinverse
-       
   )
-  
-} <i> # end of makeCacheMatrix </i>
+} # end of makeCacheMatrix
 
-<i> ## Function cacheSolve </i>
-
-<i> ## This function returns the inverse of matrix x  </i>
-
-<i> ## It first tests if cache exists in memory </i>
-
-<i> ## If cache data is not found, it calculate and returns the matrix inverse </i>
+## Function cacheSolve
+#### This function returns the inverse of matrix x 
+#### It first tests if cache exists in memory
+#### If cache data is not found, it calculate and returns the matrix inverse
 
 cacheSolve <- function(x, ...) {
   
-<i>  # Tests if cache exists </i>
-
+  # Tests if cache exists 
   invertedM <- x$getinverse()
-  
   if(!is.null(invertedM)) {
-  
     cat("Cache found! Inverse fetched from memory...\n")
-    
     return(invertedM)
-    
   }
   
- <i> # If cache not found, get the matrix, then calculate and return its inverse </i>
- 
+  # If cache not found, get the matrix, then calculate and return its inverse
   cat("Cache not found! Calculating inverse...\n")
-  
   M <- x$get()
-  
   invertedM <- solve(M)
-  
   x$setinverse(invertedM)
-  
   invertedM
   
-  
-} <i> # end of cacheSolve </i>
+} # end of cacheSolve
+
+```
