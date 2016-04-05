@@ -42,5 +42,79 @@ Specific tasks:
 ####1 - Fork  - <b>Done</b>
 ####2 - Clone - <b>Done</b>
 ####3 - New code - <b>Done</b> - Also, new Readme file created (this)  
-####4 - Commit - <b>Done</b> - [https://github.com/steniofernandes/ProgrammingAssignment2.git](https://github.com/steniofernandes/ProgrammingAssignment2)
+####4 - Commit - <b>Done</b>
 ####5 - Submit URL - <b>Done</b>
+
+## Code
+
+<i> ## Following the provided examples (makeVector and cachemean)</i>
+
+<i> ## Function makeCacheMatrix </i>
+<i> ## It defines four functions and uses scope rules to cache data </i>
+
+makeCacheMatrix <- function(x = matrix()) {
+
+<i>  ## functions definitions: set, get, setinverse, and getinverse </i>
+  
+  inv <- NULL
+  set <- function(y) {
+    x <<- y
+    inv <<- NULL
+  }
+  
+  get <- function() x
+
+  setinverse <- function(solve) inv <<- solve
+  
+  getinverse <- function() inv
+  
+<i>  ## creating functions list to return </i>
+
+  list(set = set, 
+  
+       get = get, 
+       
+       setinverse = setinverse, 
+       
+       getinverse = getinverse
+       
+  )
+  
+} <i> # end of makeCacheMatrix </i>
+
+<i> ## Function cacheSolve </i>
+
+<i> ## This function returns the inverse of matrix x  </i>
+
+<i> ## It first tests if cache exists in memory </i>
+
+<i> ## If cache data is not found, it calculate and returns the matrix inverse </i>
+
+cacheSolve <- function(x, ...) {
+  
+<i>  # Tests if cache exists </i>
+
+  invertedM <- x$getinverse()
+  
+  if(!is.null(invertedM)) {
+  
+    cat("Cache found! Inverse fetched from memory...\n")
+    
+    return(invertedM)
+    
+  }
+  
+ <i> # If cache not found, get the matrix, then calculate and return its inverse </i>
+ 
+  cat("Cache not found! Calculating inverse...\n")
+  
+  M <- x$get()
+  
+  invertedM <- solve(M)
+  
+  x$setinverse(invertedM)
+  
+  invertedM
+  
+  
+} <i> # end of cacheSolve </i>
