@@ -42,5 +42,5 @@ Specific tasks:
 ####1 - Fork  - <b>Done</b>
 ####2 - Clone - <b>Done</b>
 ####3 - New code - <b>Done</b> - Also, new Readme file created (this)  
-####4 - Commit - <b>Done</b> - [https://github.com/steniofernandes/ProgrammingAssignment2.git](https://github.com/rdpeng/ProgrammingAssignment2)
+####4 - Commit - <b>Done</b> - [https://github.com/steniofernandes/ProgrammingAssignment2.git](https://github.com/steniofernandes/ProgrammingAssignment2)
 ####5 - Submit URL - <b>Done</b>
